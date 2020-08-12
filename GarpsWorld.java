@@ -30,6 +30,10 @@ private GreenfootSound sound;
     public void started(){
         sound.playLoop(); 
     }
+    
+    public void stopped(){
+        sound.pause();
+    }
     protected void populateTheWorld(){
         //addObject(new Garp(), getWorld().getWidth()/2, getWorld().getHeight() / 2);
         addObject(new Garp(), 200, 200);
@@ -50,6 +54,8 @@ private GreenfootSound sound;
             addObject(new Bomb(),Greenfoot.getRandomNumber(400),
                 Greenfoot.getRandomNumber(400));
         }
+        
+        setPaintOrder(Garp.class, Gnomus.class, Diamond.class, Bomb.class, Rock.class);
         
     }
 }
