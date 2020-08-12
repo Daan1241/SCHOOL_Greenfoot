@@ -11,7 +11,7 @@ public class Garp extends Actor
     int  speed = 2;
     private GreenfootImage imageLeft;
     private GreenfootImage imageRight;
-    
+
     /**
      * Act - do whatever the Garp wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -29,11 +29,26 @@ public class Garp extends Actor
         //diamond = getOneOjectAtOffset(0, 0, Diamond.class);
 
     }
-    
+
     protected void collectingDiamonds(){
         Actor diamond;
-        
+        World world;
+
         diamond = getOneObjectAtOffset(0, 0, Diamond.class);
+        if(diamond != null) {
+            world = getWorld();
+            world.removeObject(diamond);
+        }
+    }
+
+    protected boolean foundRock(){
+        Actor rock;
+        rock = getOneObjectAtOffset(0, 0, Rock.class);
+
+        if(rock != null){
+            return true;
+        }
+        return false;
     }
 
     protected void movement(){
@@ -43,6 +58,9 @@ public class Garp extends Actor
             }
             setRotation(-90);
             move(speed);
+            if(foundRock()){
+            move(-speed);
+            }
 
         }
 
@@ -52,6 +70,9 @@ public class Garp extends Actor
             }
             setRotation(90);
             move(speed);
+            if(foundRock()){
+            move(-speed);
+            }
 
         }
 
@@ -61,6 +82,9 @@ public class Garp extends Actor
             }
             setRotation(0);
             move(-speed);
+            if(foundRock()){
+            move(speed);
+            }
         }
 
         if(Greenfoot.isKeyDown("right")){
@@ -70,6 +94,9 @@ public class Garp extends Actor
             setImage(imageRight);
             setRotation(0);
             move(speed);
+            if(foundRock()){
+            move(-speed);
+            }
         }   
     }
 }
