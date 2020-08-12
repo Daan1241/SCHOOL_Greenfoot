@@ -28,7 +28,7 @@ private GreenfootSound sound;
 
     
     public void started(){
-        sound.playLoop(); 
+        //sound.playLoop(); 
     }
     
     public void stopped(){

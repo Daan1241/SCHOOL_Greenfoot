@@ -26,9 +26,25 @@ public class Garp extends Actor
     {
         movement(); // Updates movement every frame
         collectingDiamonds();
+        explodeBomb();
         //diamond = getOneOjectAtOffset(0, 0, Diamond.class);
 
     }
+    
+    protected void explodeBomb(){
+        Actor bomb;
+        World world;
+        
+        bomb = getOneObjectAtOffset(0, 0, Explosion.class);
+        if(bomb != null){
+            world = getWorld();
+            world.removeObject(bomb);
+        }
+    }
+    
+    
+    
+    
 
     protected void collectingDiamonds(){
         Actor diamond;
