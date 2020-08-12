@@ -23,9 +23,13 @@ private GreenfootSound sound;
         super(400, 400, 1); 
         populateTheWorld();
         sound = new GreenfootSound("septic_shock_c418.mp3");
-sound.playLoop();
+
     }
 
+    
+    public void started(){
+        sound.playLoop(); 
+    }
     protected void populateTheWorld(){
         //addObject(new Garp(), getWorld().getWidth()/2, getWorld().getHeight() / 2);
         addObject(new Garp(), 200, 200);
